@@ -1,4 +1,4 @@
-package distributed.calculator.domain
+package calculation.service.domain
 
 trait MathOp
 

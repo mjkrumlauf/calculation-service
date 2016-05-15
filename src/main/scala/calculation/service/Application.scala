@@ -1,7 +1,7 @@
-package distributed.calculator
+package calculation.service
 
 import akka.actor.{ActorRef, ActorSystem, Props}
-import distributed.calculator.domain.CalculatorActor
+import calculation.service.domain.CalculatorActor
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ApplicationContext
