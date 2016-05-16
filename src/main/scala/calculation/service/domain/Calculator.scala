@@ -2,7 +2,7 @@ package calculation.service.domain
 
 import akka.actor.Actor
 
-class CalculatorActor extends Actor {
+class Calculator extends Actor {
   def receive = {
     case Add(n1, n2) =>
       println("Calculating %d + %d".format(n1, n2))
