@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-testkit" % "2.4.4" % Test
+  "com.typesafe.akka" %% "akka-testkit" % "2.4.4" % Test,
+  "org.scalatest" %% "scalatest" % "2.2.6" % Test
 )
 
 
