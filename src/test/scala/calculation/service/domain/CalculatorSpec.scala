@@ -44,4 +44,12 @@ class CalculatorSpec extends TestKit(ActorSystem("test")) with ImplicitSender
       expectMsg(DivisionResult(dividend, divisor, 1.5))
     }
   }
+
+  it must {
+    "raise a number to a power and return the result" in {
+      val (base, exponent) = (3.0, 3.0)
+      this.calculator ! Exponentiate(base, exponent)
+      expectMsg(ExponentiationResult(base, exponent, 27.0))
+    }
+  }
 }
