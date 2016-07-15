@@ -6,7 +6,7 @@ import akka.stream.scaladsl.{Sink, Source}
 import calculation.service.messaging.{KafkaDeserializer, KafkaSerializer, Message}
 import com.softwaremill.react.kafka.{ConsumerProperties, ProducerMessage, ProducerProperties, ReactiveKafka}
 import org.apache.kafka.clients.consumer.ConsumerRecord
-import org.apache.kafka.common.serialization.{Deserializer, Serializer, StringDeserializer, StringSerializer}
+import org.apache.kafka.common.serialization.{StringDeserializer, StringSerializer}
 import org.reactivestreams.{Publisher, Subscriber}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -28,13 +28,13 @@ class MathOpProcessor @Autowired()(
     topic = "ingoing-math-op",
     groupId = "group-math-op",
     keyDeserializer = new StringDeserializer,
-    valueDeserializer = new KafkaDeserializer().asInstanceOf[Deserializer[Message]]
+    valueDeserializer = new KafkaDeserializer
   ))
   val subscriber: Subscriber[ProducerMessage[String, Message]] = kafka.publish(ProducerProperties(
     bootstrapServers = "localhost:9092",
     topic = "outgoing-math-result",
     keySerializer = new StringSerializer,
-    valueSerializer = new KafkaSerializer().asInstanceOf[Serializer[Message]]
+    valueSerializer = new KafkaSerializer
   ))
 
   Source.fromPublisher(publisher)
