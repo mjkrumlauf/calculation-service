@@ -16,11 +16,9 @@ libraryDependencies ++= Seq(
   "org.springframework.boot" % "spring-boot-starter-tomcat" % springBootVersion,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-  "org.webjars" % "bootstrap" % "3.1.1",
-//  "org.thymeleaf" % "thymeleaf-spring4" % "2.1.2.RELEASE",
-  "org.hibernate" % "hibernate-validator" % "5.0.2.Final",
-  "nz.net.ultraq.thymeleaf" % "thymeleaf-layout-dialect" % "1.2.1"
-)
+  "org.apache.kafka" % "kafka-clients" % "0.10.0.0",
+  "com.softwaremill.reactivekafka" %% "reactive-kafka-core" % "0.10.1",
+  "org.webjars" % "bootstrap" % "3.1.1")
 
 val tomcatVersion = "8.0.30"
 
@@ -32,7 +30,8 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-  "org.scalatest" %% "scalatest" % "2.2.6" % Test
+  "org.scalatest" %% "scalatest" % "2.2.6" % Test,
+  "net.manub" %% "scalatest-embedded-kafka" % "0.7.0" % Test
 )
 
 

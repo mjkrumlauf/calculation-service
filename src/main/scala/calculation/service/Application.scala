@@ -21,6 +21,6 @@ object Application {
 @EnableAutoConfiguration
 @ComponentScan
 class Config {
-  @Bean def actorSystem: ActorSystem = ActorSystem("calculatorActor")
+  @Bean def actorSystem: ActorSystem = ActorSystem("CalculationSystem")
   @Bean def calculator: ActorRef = actorSystem.actorOf(Props(new Calculator))
 }
