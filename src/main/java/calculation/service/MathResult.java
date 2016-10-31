@@ -1,12 +1,17 @@
 package calculation.service;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 import java.util.UUID;
 
 /**
  * Created by mjkrumlauf on 10/16/16.
  */
 public class MathResult {
+
+    @JsonUnwrapped
     private MathOp mathOp;
+    
     private double result;
     private String id;
 
