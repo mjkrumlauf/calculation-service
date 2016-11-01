@@ -3,21 +3,22 @@ package calculation.service;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
  * Created by mjkrumlauf on 10/11/16.
  */
 public class MathOp {
-    private final int n1;
-    private final int n2;
+    private final BigDecimal n1;
+    private final BigDecimal n2;
     private final String op;
     private final String id;
 
     @JsonCreator
     public MathOp(
-            @JsonProperty("n1") int n1,
-            @JsonProperty("n2") int n2,
+            @JsonProperty("n1") BigDecimal n1,
+            @JsonProperty("n2") BigDecimal n2,
             @JsonProperty("op") String op) {
         this.n1 = n1;
         this.n2 = n2;
@@ -25,11 +26,11 @@ public class MathOp {
         this.id = UUID.randomUUID().toString();
     }
 
-    public int getN1() {
+    public BigDecimal getN1() {
         return n1;
     }
 
-    public int getN2() {
+    public BigDecimal getN2() {
         return n2;
     }
 

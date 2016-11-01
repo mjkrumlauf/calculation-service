@@ -8,6 +8,8 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 
+import java.math.BigDecimal;
+
 /**
  * Created by mjkrumlauf on 10/16/16.
  */
@@ -54,15 +56,15 @@ public class CalculationController extends AbstractVerticle {
     private MathResult doCalculate(final MathOp mathOp) {
         System.out.println("mathOp = " + mathOp);
 
-        double result = 0.0;
+        BigDecimal result = new BigDecimal(0.0);
         if ("+".equals(mathOp.getOp())) {
-            result = Math.addExact(mathOp.getN1(), mathOp.getN2());
+            result = mathOp.getN1().add(mathOp.getN2());
         } else if ("-".equals(mathOp.getOp())) {
-            result = Math.subtractExact(mathOp.getN1(), mathOp.getN2());
+            result = mathOp.getN1().subtract(mathOp.getN2());
         } else if ("*".equals(mathOp.getOp())) {
-            result = Math.multiplyExact(mathOp.getN1(), mathOp.getN2());
+            result = mathOp.getN1().multiply(mathOp.getN2());
         } else if ("/".equals(mathOp.getOp())) {
-            result = Math.floorDiv(mathOp.getN1(), mathOp.getN2());
+            result = mathOp.getN1().divide(mathOp.getN2());
         } else {
             throw new IllegalArgumentException("Math operator " + mathOp.getOp() + " is invalid");
         }
