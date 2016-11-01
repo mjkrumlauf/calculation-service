@@ -2,6 +2,7 @@ package calculation.service;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
@@ -11,8 +12,8 @@ public class MathResult {
 
     @JsonUnwrapped
     private MathOp mathOp;
-    
-    private double result;
+
+    private BigDecimal result;
     private String id;
 
     public MathResult() {
@@ -28,11 +29,11 @@ public class MathResult {
         return this;
     }
 
-    public double getResult() {
+    public BigDecimal getResult() {
         return result;
     }
 
-    public MathResult setResult(double result) {
+    public MathResult setResult(BigDecimal result) {
         this.result = result;
         return this;
     }

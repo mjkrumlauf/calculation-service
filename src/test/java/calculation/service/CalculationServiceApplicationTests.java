@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.math.BigDecimal;
+
 @RunWith(VertxUnitRunner.class)
 public class CalculationServiceApplicationTests {
 
@@ -31,7 +33,7 @@ public class CalculationServiceApplicationTests {
 	public void testMyApplication(final TestContext context) {
 		final Async async = context.async();
 
-        final String json = Json.encodePrettily(new MathOp(2, 2, "+"));
+        final String json = Json.encodePrettily(new MathOp(new BigDecimal("5.01"), new BigDecimal("5.01"), "*"));
         final String length = Integer.toString(json.length());
 
         vertx.createHttpClient().post(8080, "localhost", "/evaluate")
@@ -42,7 +44,7 @@ public class CalculationServiceApplicationTests {
                     context.assertTrue(response.headers().get("content-type").contains("application/json"));
 					response.bodyHandler(body -> {
                         final MathResult mathResult = Json.decodeValue(body.toString(), MathResult.class);
-						context.assertEquals(mathResult.getResult(), 4.0);
+						context.assertEquals(mathResult.getResult(), new BigDecimal("25.1001"));
 						async.complete();
 					});
 				}).write(json)
