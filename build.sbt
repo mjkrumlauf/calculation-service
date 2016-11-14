@@ -5,6 +5,10 @@ scalaVersion in ThisBuild := "2.11.8"
 
 lagomServiceGatewayPort in ThisBuild := 8080
 
+lagomCassandraEnabled in ThisBuild := false
+
+lagomKafkaEnabled in ThisBuild := false
+
 lazy val calculatorApi = project("calculator-api")
   .settings(
     version := "1.0-SNAPSHOT",
