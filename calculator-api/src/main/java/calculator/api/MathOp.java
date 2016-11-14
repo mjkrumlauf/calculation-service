@@ -1,15 +1,20 @@
-package calculation.service;
+package calculator.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.lightbend.lagom.serialization.Jsonable;
 
+import javax.annotation.concurrent.Immutable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
  * Created by mjkrumlauf on 10/11/16.
  */
-public class MathOp {
+@Immutable
+@JsonDeserialize
+public class MathOp implements Jsonable {
     private final BigDecimal n1;
     private final BigDecimal n2;
     private final String op;
