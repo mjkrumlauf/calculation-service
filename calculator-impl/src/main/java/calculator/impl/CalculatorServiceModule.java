@@ -1,6 +1,7 @@
 package calculator.impl;
 
 import calculator.api.CalculatorService;
+import calculator.stream.api.CalculatorStreamService;
 import com.google.inject.AbstractModule;
 import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
 
@@ -11,5 +12,6 @@ public class CalculatorServiceModule extends AbstractModule implements ServiceGu
   @Override
   protected void configure() {
     bindServices(serviceBinding(CalculatorService.class, CalculatorServiceImpl.class));
+    bindClient(CalculatorStreamService.class);
   }
 }

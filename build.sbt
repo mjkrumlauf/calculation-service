@@ -22,8 +22,32 @@ lazy val calculatorImpl = project("calculator-impl")
   .settings(version := "1.0-SNAPSHOT")
   .enablePlugins(LagomJava)
   .dependsOn(calculatorApi)
+  .dependsOn(calculatorStreamApi)
   .settings(
       libraryDependencies ++= Seq(
+      lagomJavadslApi,
+      lagomJavadslJackson,
+      lagomJavadslTestKit
+    )
+  )
+
+lazy val calculatorStreamApi = project("calculator-stream-api")
+  .settings(version := "1.0-SNAPSHOT")
+  .dependsOn(calculatorApi)
+  .settings(
+    libraryDependencies ++= Seq(
+      lagomJavadslApi,
+      lagomJavadslJackson
+    )
+  )
+
+lazy val calculatorStreamImpl = project("calculator-stream-impl")
+  .settings(version := "1.0-SNAPSHOT")
+  .enablePlugins(LagomJava)
+  .dependsOn(calculatorApi)
+  .dependsOn(calculatorStreamApi)
+  .settings(
+    libraryDependencies ++= Seq(
       lagomJavadslApi,
       lagomJavadslJackson,
       lagomJavadslTestKit
