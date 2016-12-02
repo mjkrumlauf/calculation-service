@@ -2,6 +2,7 @@
 *.iml
 **/.sbtserver*
 target/
+classes/
 project/target/
 ideatarget
 .target
