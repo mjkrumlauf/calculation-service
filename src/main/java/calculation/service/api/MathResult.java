@@ -1,19 +1,16 @@
-package calculator.api;
+package calculation.service.api;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.lightbend.lagom.serialization.Jsonable;
 
-import javax.annotation.concurrent.Immutable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
  * Created by mjkrumlauf on 10/16/16.
  */
-@Immutable
 @JsonDeserialize
-public class MathResult implements Jsonable {
+public class MathResult {
 
     @JsonUnwrapped
     private MathOp mathOp;
